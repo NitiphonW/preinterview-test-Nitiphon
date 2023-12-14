@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Fourth</h1>
+    x <input type="date" id="x"></input>
+    y <input type="date" id="y"></input>
+    m <input type="date" id="m"></input>
+    <button onclick="calDate()">Try it</button>
+    <pre id="output"></pre>
+    <hr>
+</body>
+
+</html>
+
+<script>
+    function calDate() {
+        let x = new Date(document.getElementById("x").value);
+        let y = new Date(document.getElementById("y").value);
+        let m = new Date(document.getElementById("m").value);
+        let output = document.getElementById('output');
+        let between = 'false';
+        output.innerHTML = '';
+        if (m >= x && m <= y) {
+            between = 'true';
+        }
+        let diffTime = Math.abs(m - x);
+        let diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        output.innerHTML = between + ', ' + diffDays + ' Days';
+    }
+</script>

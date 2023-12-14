@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Third</h1>
+    <label>Words </label><input id="word"></input>
+    <label>Char </label><input id="char"></input>
+    <button onclick="findChar()">Try it</button>
+    <pre id="output"></pre>
+    <hr>
+</body>
+
+</html>
+
+<script>
+    function findChar() {
+        let word = document.getElementById("word").value;
+        let char = document.getElementById("char").value;
+        let txtArr = word.split(',');
+        let output = document.getElementById('output');
+        let outputArr = [];
+        let num = [];
+        output.innerHTML = '';
+        for (let i = 0; i < txtArr.length; i++) {
+            if (txtArr[i].trim().toLowerCase().indexOf(char.toLowerCase()) != -1) {
+                if (outputArr.indexOf(txtArr[i].trim()) == -1) {
+                    outputArr.push(txtArr[i].trim());
+                    num.push(txtArr[i].trim().toLowerCase().indexOf(char.toLowerCase()));
+                }
+            }
+        }
+        if (outputArr.length > 0) {
+            output.innerHTML = '[' + outputArr + ']<br>' + num;
+        } else {
+            output.innerHTML = '<p>No results found</p>';
+        }
+
+    }
+</script>

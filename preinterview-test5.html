@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Fifth</h1>
+    <input id="url"></input>
+    <button onclick="go()">Go</button><br><br>
+    <button onclick="previous()">Previous</button>
+    <button onclick="current()">Current</button>
+    <button onclick="next()">Next</button>
+    <button onclick="allHistory()">All</button>
+    <pre id="output"></pre>
+    <hr>
+</body>
+
+</html>
+
+<script>
+    let output = document.getElementById('output');
+    let url = '';
+    let prevUrl = '';
+    let nextUrl = '';
+    let history = [];
+    function go() {
+        output.innerHTML = '';
+        if (url !== document.getElementById('url').value) {
+            prevUrl = url;
+            nextUrl = '';
+            url = document.getElementById('url').value;
+        }
+    }
+    function previous() {
+        output.innerHTML = '';
+        if (prevUrl === '') {
+            output.innerHTML = 'No website to previous';
+        } else {
+            nextUrl = url;
+            url = prevUrl;
+            prevUrl = '';
+            document.getElementById('url').value = url;
+        }
+    }
+    function current() {
+        output.innerHTML = 'Now you on <a>' + url + '</a>';
+    }
+    function next() {
+        output.innerHTML = '';
+        if (nextUrl === '') {
+            output.innerHTML = 'No website to go';
+        } else {
+            prevUrl = url;
+            url = nextUrl;
+            nextUrl = '';
+            document.getElementById('url').value = url;
+        }
+    }
+    function allHistory() {
+        history = [];
+        prevUrl ? history.push(prevUrl) : '';
+        url ? history.push(url) : '';
+        nextUrl ? history.push(nextUrl) : '';
+        output.innerHTML = '[' + history + ']';
+    }
+</script>

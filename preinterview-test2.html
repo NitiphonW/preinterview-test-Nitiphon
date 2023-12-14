@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Second</h1>
+    <input id="values">
+    <button onclick="pingPong()">Try it</button>
+    <pre id="output"></pre>
+    <hr>
+</body>
+
+</html>
+<script>
+    function pingPong() {
+        let input = document.getElementById('values').value;
+        let numArr = input.split(' ');
+        let output = document.getElementById('output');
+        let n = numArr[0];
+        let i = numArr[1];
+        let j = numArr[2];
+        output.innerHTML = '';
+        for (let k = 1; k <= n; k++) {
+            let pong = false;
+            let ping = false;
+            if (k % i === 0) {
+                ping = true;
+            }
+            if (k % j === 0) {
+                pong = true;
+            }
+            if (ping && pong) {
+                output.innerHTML += k + ' Ping Pong<br>';
+            } else if (ping) {
+                output.innerHTML += k + ' Ping<br>';
+            } else if (pong) {
+                output.innerHTML += k + ' Pong<br>';
+            }
+        }
+    } </script>
